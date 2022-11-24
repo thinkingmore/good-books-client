@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (       
-        <div className="row p-4 align-items-center mx-auto">
+        <div className="row p-4 align-items-center bg-light mx-auto">
         <div className="col-lg-7 p-3 p-lg-5">
             <div className="lc-block mb-3">
                 <div editable="rich">
