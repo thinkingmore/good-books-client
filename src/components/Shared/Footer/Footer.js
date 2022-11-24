@@ -6,7 +6,7 @@ const Footer = () => {
     return (
      <footer className='row row-cols-md-5 row-cols-sm-2 row-cols-1 py-5 my-5 border-top bg-dark text-white mx-auto'>
         <div className="col mb-3">
-            <Link to="/" className="d-flex ms-5 align-items-center text-white mb-3 link-dark text-decoration-none keychainify-checked">
+            <Link to="/" className="d-flex ms-5 align-items-center text-white mb-3 nav-link text-decoration-none keychainify-checked">
                 <h5>Good Books</h5>
             </Link>
             <p className="text-muted ms-5">© 2022, Good Books</p>
