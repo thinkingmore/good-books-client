@@ -1,0 +1,181 @@
+[{
+    "name": "Clean Code: A Handbook of Agile Software Craftsmanship",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._AC_UL600_SR600,600_.jpg",
+    "category_name": "programming", 
+    "location": "Agargaon",
+    "resale_price": 25,
+    "original_price": 64,
+    "years_of_use": 2
+  }, 
+  
+  {
+    "name": "Introduction to Algorithms",
+    "img": "https://m.media-amazon.com/images/I/513P8XoCAEL._AC_SY780_.jpg",
+    "category_name": "programming",  
+    "location": "Dhanmondi",
+    "resale_price": 86,
+    "original_price": 285,
+    "years_of_use": 5
+  }, 
+  {
+    "name": "Structure and Interpretation of Computer Programs (SICP)",
+    "img": "https://m.media-amazon.com/images/I/91QLUVJx2AL.jpg",
+    "category_name": "programming",
+    "location": "Mirpur",
+    "resale_price": 35,
+    "original_price": 105,
+    "years_of_use": 4
+  },
+   
+  {
+    "name": "Code Complete: A Practical Handbook of Software Construction",
+    "img": "https://m.media-amazon.com/images/I/51FUYfErOXL.jpg",
+    "category_name": "programming",   
+    "location": "Mohammedpur",
+    "resale_price": 18,
+    "original_price": 118,
+    "years_of_use": 3
+  },
+   
+  {
+    "name": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "img": "https://m.media-amazon.com/images/I/51YC9nPgbhS._AC_SY780_.jpg",
+    "category_name": "programming",  
+    "location": "Gulshan",
+    "resale_price": 12,
+    "original_price": 75,
+    "years_of_use": 8
+  },
+
+  
+  {
+    "name": "It starts with us",
+    "img": "https://m.media-amazon.com/images/I/51HMYPVn1bL._AC_SY780_.jpg",
+    "category_name": "Fiction",   
+    "location": "Banani",
+    "resale_price": 35,
+    "original_price": 72,
+    "years_of_use": 2
+  }, 
+  
+  {
+    "name": "1984",
+    "category_name": "Fiction", 
+    "img": "https://static1.eboighar.com/thumbimages/Books/book_75042021-07-08_1625718517.jpg",  
+    "location": "Banani",
+    "resale_price": 92,
+    "original_price": 135,
+    "years_of_use": 6
+  },
+  
+  {
+    "name": "I have a dream",
+    "img": "https://m.media-amazon.com/images/I/71bJLYaVAsL.jpg",
+    "category_name": "Self Development",   
+    "location": "Mohammedpur",
+    "resale_price": 32,
+    "original_price": 208,
+    "years_of_use": 12
+  }, 
+  
+  {
+    "name": "Think and Grow Rich",
+    "category_name": "Self Development",  
+    "img": "https://m.media-amazon.com/images/I/61y04z8SKEL._AC_SY780_.jpg", 
+    "location": "Dhanmondi",
+    "resale_price": 35,
+    "original_price": 72,
+    "years_of_use": 4
+  }, 
+  
+  {
+    "name": "Eat That Frog",
+    "category_name": "Self Development",
+    "img": "https://m.media-amazon.com/images/I/516YkEzLC+L._AC_SY780_.jpg",   
+    "location": "Mirpur",
+    "resale_price": 56,
+    "original_price": 108,
+    "years_of_use": 5
+  },
+  
+  {
+    "name": "The Power of Positive Thinking",
+    "category_name": "Self Development", 
+    "img": "https://m.media-amazon.com/images/I/41x9OVnYjaL._AC_SY780_.jpg",  
+    "location": "Gulshan",
+    "resale_price": 85,
+    "original_price": 112,
+    "years_of_use": 1
+  },
+  
+  {
+    "name": "Introductory Economics",
+    "img": "https://www.worldscientific.com/action/showCoverImage?doi=10.1142/6182",
+    "category_name": "Academic",   
+    "location": "Mirpur",
+    "resale_price": 45,
+    "original_price": 97,
+    "years_of_use": 3
+  }, 
+  
+  {
+    "name": "Learning Mathmatics",
+    "img": "https://m.media-amazon.com/images/I/51bVrKr+OfL.jpg",
+    "category_name": "Academic",   
+    "location": "Agargaon",
+    "resale_price": 34,
+    "original_price": 125,
+    "years_of_use": 4
+  }, 
+  
+  {
+    "name": "Principles of Business Management",
+    "img": "https://m.media-amazon.com/images/I/91CkQKJBnmL.jpg",
+    "category_name": "Academic",   
+    "location": "Mirpur",
+    "resale_price": 25,
+    "original_price": 88,
+    "years_of_use": 4
+  }, 
+  
+  {
+    "name": "International Political Economy",
+    "img": "https://m.media-amazon.com/images/I/71EAol2r1dL.jpg",
+    "category_name": "Non-Fiction",   
+    "location": "Gulshan",
+    "resale_price": 72,
+    "original_price": 135,
+    "years_of_use": 2
+  }, 
+  
+  {
+    "name": "Idea of Justice",
+    "img": "https://m.media-amazon.com/images/I/81Q9vR8lqcL.jpg",
+    "category_name": "Non-Fiction",   
+    "location": "Mohammedpur",
+    "resale_price": 65,
+    "original_price": 205,
+    "years_of_use": 2
+  }, 
+  
+  {
+    "name": "Wealth and Poverty",
+    "img": "https://m.media-amazon.com/images/I/51XmB1mrWjL.jpg",
+    "category_name": "Non-Fiction",   
+    "location": "Gulshan",
+    "resale_price": 112,
+    "original_price": 135,
+    "years_of_use": 1
+  },
+  
+  {
+    "name": "How The West Won",
+    "img": "https://images-na.ssl-images-amazon.com/images/I/51OBUPg+pTL._AC_UL900_SR615,900_.jpg",
+    "category_name": "Non-Fiction",   
+    "location": "Mirpur",
+    "resale_price": 36,
+    "original_price": 42,
+    "years_of_use": 6
+  }
+  
+]
