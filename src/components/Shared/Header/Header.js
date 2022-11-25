@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 const Header = () => {
 
-    const { user } =  useContext( AuthContext)
+    const { user, logOut } =  useContext( AuthContext)
+    const handleLogOut = () => {
+        logOut()
+        .then( () => {})
+        .catch( error => console.log(error))
+        toast.success("Log out successfull")
+    }
     return (
         <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
             <div className="container-fluid">
@@ -32,7 +38,7 @@ const Header = () => {
                                     <Link className="nav-link disabled"><small>{ user?.email}</small></Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link">Logout</Link>
+                                    <Link onClick={ handleLogOut } className="nav-link">Logout</Link>
                                 </li>
                                 
                             </>
@@ -49,6 +55,7 @@ const Header = () => {
                         }
                     </ul>
                 </div>
+                <Toaster/>
             </div>
         </nav>
     );

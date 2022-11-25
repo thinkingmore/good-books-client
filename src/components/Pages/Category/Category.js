@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { FaCheckCircle } from 'react-icons/fa';
 import BookingModal from './BookingModal';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 const Category = () => {
+
+    const { user } = useContext(AuthContext);
     const books = useLoaderData();
-    console.log(books);
-
-    const handleBooking = (e) => {
-        e.preventDefault();
-        console.log("Booking system ready")
-
-    }
+   
+ 
+    
     
     return (
         <div className="row row-cols-1 g-0">
@@ -44,7 +43,7 @@ const Category = () => {
                             <div className='mt-4'>
                                 <BookingModal 
                                     book={book}
-                                    handleBooking={handleBooking}
+                                    user={user}
                                 ></BookingModal>                             
                             </div>
                         </div>
