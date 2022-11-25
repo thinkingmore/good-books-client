@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { FaCheckCircle } from 'react-icons/fa';
+import BookingModal from './BookingModal';
 
 
 const Category = () => {
     const books = useLoaderData();
     console.log(books);
+
     
     return (
         <div className="row row-cols-1 g-0">
@@ -32,9 +34,33 @@ const Category = () => {
                             <div className="my-2 d-flex justify-content-between">
                                 <span className='mx-2 fs-6'><strong>Posted on:</strong> {book.time_of_posting}</span>
                                 <span className='mx-2 fs-6'><strong>Seller Name:</strong> {book.seller_name} 
-                                { book.seller_status && <span className='ms-2 text-primary'><FaCheckCircle/></span>}</span>
-                                
+                                { book.seller_status && <span className='ms-2 text-primary'><FaCheckCircle/></span>}</span>                    
                             </div>
+                            <>  
+                                <BookingModal></BookingModal>         
+                                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                Launch demo modal
+                                </button>
+                                <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div className="modal-dialog modal-dialog-centered" role="document">
+                                    <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body">
+                                        ...
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" className="btn btn-primary">Save changes</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div> */}
+                            </>                    
                         </div>
                        </div>
                    </div>
