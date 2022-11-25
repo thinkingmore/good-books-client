@@ -1,31 +1,54 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+
 
 const Header = () => {
+
+    const { user } =  useContext( AuthContext)
     return (
-        <Navbar className='mt-2' bg="dark" expand="lg" variant="dark">
-        <Container>
-            <Navbar.Brand href="#home">Good Books</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                    Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                </NavDropdown.Item>
-                </NavDropdown>
-            </Nav>
-            </Navbar.Collapse>
-        </Container>
-        </Navbar>
+        <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div className="container-fluid">
+                <Link className="navbar-brand"to="/">Good Books</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav ms-auto">
+                        <li className="nav-item">
+                            <Link className="nav-link active" aria-current="page"to="/">Home</Link>
+                        </li>
+                        {
+                            user?
+                            <>
+                                <li className="nav-item">
+                                    <Link className="nav-link">Dashboard</Link>
+                                </li>                      
+                                <li className="nav-item">
+                                    <Link className="nav-link disabled">{ user?.email}</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link">Logout</Link>
+                                </li>
+                                
+                            </>
+                                :  
+                            <>
+                                <li className="nav-item">
+                                    <Link className="nav-link"to="/login">Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link"to="/signup">Sign up</Link>
+                                </li>
+                            
+                            </>                    
+                           
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
     );
 };
 

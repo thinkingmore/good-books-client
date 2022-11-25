@@ -25,7 +25,7 @@ const Banner = () => {
             </div>
         </div>
         <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-            <div className="lc-block"><img className="rounded-start" src="https://images.unsplash.com/photo-1618365908648-e71bd5716cba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"/></div>
+            <div className="lc-block"><img className="rounded-start" src="https://images.unsplash.com/photo-1618365908648-e71bd5716cba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="banner"/></div>
         </div>
     </div>  
     );
