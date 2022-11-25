@@ -11,12 +11,12 @@ const Login = () => {
     }
     return (
         <form onSubmit={handleSubmit(handleLogin)} style={{maxWidth:"25rem"}} className='mt-2 mx-auto'>
-            <div className="form-group">
+            <div className="form-group my-3">
                 <label htmlFor="email">Email</label>
                 <input type="email" {...register("email")} 
                 className="form-control mt-2" id="email" placeholder="Email"/>
             </div>
-            <div className="form-group">
+            <div className="form-group my-3">
                 <label htmlFor="password">Password</label>
                 <input type="password" {...register("password",{
                             required: "Password is required",
