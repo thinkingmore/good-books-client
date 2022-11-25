@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const handleLogin = data => {
-        console.log(data);
-       
+    const {login} = useContext(AuthContext);
+    
+    const handleLogin = (data) =>{
+
+        login( data.email, data.password)
+        .then(res=> {
+          const user = res.user;
+          console.log(user);
+
+          const currentUser =  {
+            email: user?.email
+          }
+
+          console.log(currentUser);
+        })  
     }
+
     return (
         <form onSubmit={handleSubmit(handleLogin)} style={{maxWidth:"25rem"}} className='mt-2 mx-auto'>
             <div className="form-group my-3">

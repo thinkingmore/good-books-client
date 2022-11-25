@@ -8,6 +8,11 @@ const Category = () => {
     const books = useLoaderData();
     console.log(books);
 
+    const handleBooking = (e) => {
+        e.preventDefault();
+        console.log("Booking system ready")
+
+    }
     
     return (
         <div className="row row-cols-1 g-0">
@@ -18,10 +23,10 @@ const Category = () => {
                     >
                    <div className="card my-2 d-flex">
                        <div className="row px-4">
-                        <div className="col-md-4">
+                        <div className="col-lg-4 col-sm-2">
                             <img className='img-fluid' style={{maxWidth: "18rem"}} src={book.img} alt="" />
                         </div>
-                        <div className="col-md-7 py-5">
+                        <div className="col-lg-8 py-5">
                             <h3 className='my-2'>{book.name}</h3>
                             <div className="my-2 d-flex justify-content-between">
                                 <span className='mx-2 fs-6'><strong>Original Price:</strong> ${book.original_price}</span>
@@ -36,31 +41,12 @@ const Category = () => {
                                 <span className='mx-2 fs-6'><strong>Seller Name:</strong> {book.seller_name} 
                                 { book.seller_status && <span className='ms-2 text-primary'><FaCheckCircle/></span>}</span>                    
                             </div>
-                            <>  
-                                <BookingModal></BookingModal>         
-                                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                Launch demo modal
-                                </button>
-                                <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div className="modal-dialog modal-dialog-centered" role="document">
-                                    <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div className="modal-body">
-                                        ...
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" className="btn btn-primary">Save changes</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div> */}
-                            </>                    
+                            <div className='mt-4'>
+                                <BookingModal 
+                                    book={book}
+                                    handleBooking={handleBooking}
+                                ></BookingModal>                             
+                            </div>
                         </div>
                        </div>
                    </div>

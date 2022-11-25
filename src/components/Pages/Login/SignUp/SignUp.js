@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
+    const { createUser,updateUser } = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('');
 
     const handleSignUp = (data) => {
-        console.log(data)
+        console.log(data);
+        setSignUpError('');
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                console.log('User Created Successfully.')
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch(err => console.log(err));
+            })
+            .catch(error => {
+                console.log(error)
+                setSignUpError(error.message)
+            });
     }
 
     return (
@@ -40,6 +60,7 @@ const SignUp = () => {
             </div>
             <button type="submit" className="btn btn-primary w-100 mt-2">Submit</button>
             <p>Already have an account? Click here to <Link to="/login">Login</Link></p>
+            {signUpError && <p className='text-danger'>{signUpError}</p>}
         </form>
     );
 };
