@@ -19,14 +19,17 @@ const Header = () => {
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page"to="/">Home</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" aria-current="page" to="/blog">Blog</Link>
+                        </li>
                         {
                             user?
                             <>
                                 <li className="nav-item">
-                                    <Link className="nav-link">Dashboard</Link>
+                                    <Link className="nav-link" to="/dashboard">Dashboard</Link>
                                 </li>                      
                                 <li className="nav-item">
-                                    <Link className="nav-link disabled">{ user?.email}</Link>
+                                    <Link className="nav-link disabled"><small>{ user?.email}</small></Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link">Logout</Link>
@@ -42,8 +45,7 @@ const Header = () => {
                                     <Link className="nav-link"to="/signup">Sign up</Link>
                                 </li>
                             
-                            </>                    
-                           
+                            </>                       
                         }
                     </ul>
                 </div>

@@ -8,11 +8,12 @@ const SignUp = () => {
 
     const { createUser,updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-
+    // const [createdUserEmail, setCreatedUserEmail] = useState('')
+    
     const handleSignUp = (data) => {
         console.log(data);
         setSignUpError('');
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -21,15 +22,31 @@ const SignUp = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => { 
+                        saveUser(data.name, data.email, data.role)
+                    })
                     .catch(err => console.log(err));
             })
             .catch(error => {
                 console.log(error)
                 setSignUpError(error.message)
             });
-    }
 
+            const saveUser = (name, email, role) =>{
+                const user ={name, email, role};
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    console.log(data);
+                })
+            }
+    }
     return (
         <form onSubmit={handleSubmit(handleSignUp)} style={{maxWidth:"25rem"}} className='mt-2 mx-auto'>
             <div className="form-group my-3">
@@ -56,6 +73,15 @@ const SignUp = () => {
                             pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password must have uppercase, number and special characters'}
                         })}
                 className="form-control mt-2" id="password" placeholder="Password"/>
+                {errors.password && <p className='text-danger' role="alert">{errors.password?.message}</p>}
+            </div>
+            <div className="form-group my-3">
+                <label htmlFor="role">Sign up as:</label>
+                <select {...register("role")}
+                    className="form-select my-4" aria-label="Default select example">
+                    <option selected>Seller</option>
+                    <option value="1">Buyer</option>
+                </select> 
                 {errors.password && <p className='text-danger' role="alert">{errors.password?.message}</p>}
             </div>
             <button type="submit" className="btn btn-primary w-100 mt-2">Submit</button>
