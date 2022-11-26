@@ -7,6 +7,7 @@ import MyProduct from '../../../Pages/Dashboard/MyProduct';
 import Home from '../../../Pages/Home/Home/Home';
 import Login from '../../../Pages/Login/Login/Login';
 import SignUp from '../../../Pages/Login/SignUp/SignUp';
+import NotFound from '../../../Pages/NotFound/NotFound';
 const {createBrowserRouter} = require('react-router-dom');
 
 export const router = createBrowserRouter([
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: '/myproducts',
                 element: <MyProduct></MyProduct>
+            },
+            {
+                path: '*',
+                element: <NotFound></NotFound>
             }
         ]
     }
