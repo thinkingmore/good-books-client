@@ -22,6 +22,10 @@ const Seller = ( ) => {
     console.log(imageHostKey);
     
     const handleAddItem = (data) => {
+
+        // using lowercase category name conversion to avoid mix match in category
+        const category = data.category_name.toLowerCase();
+        
         console.log(data);
         const image = data.image[0];
         const formData = new FormData();
@@ -37,7 +41,7 @@ const Seller = ( ) => {
                 const product = {
                     name: data.name,	
                     img: imgData.data.url,	
-                    category_name: data.category_name,	
+                    category_name: category,	
                     location: data.location,	
                     resale_price: data.resale_price,	
                     original_price: data.original_price ,	
