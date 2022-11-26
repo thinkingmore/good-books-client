@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import toast, { Toaster } from 'react-hot-toast';
 
 function BookingModal( {book, user} ) {
-    
+  console.log(book);  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,6 +17,7 @@ function BookingModal( {book, user} ) {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    const img = form.img.value;
     const email = form.email.value;
     const book = form.itemName.value;
     const price = form.price.value;
@@ -25,6 +26,7 @@ function BookingModal( {book, user} ) {
 
     const booking = {
        name: name,
+       img: img,
        email: email,
        book_name: book,
        price: price,
@@ -75,6 +77,9 @@ function BookingModal( {book, user} ) {
             <form onSubmit={handleBooking}>
                 <div className="mb-3">
                     <input type="name"  name="name" defaultValue={user?.displayName} className="form-control" id="nameField" placeholder="Name"/>
+                </div>
+                <div className="mb-3 visually-hidden">
+                    <input type="img"  name="img" defaultValue={book.img} className="form-control" id="nameField" placeholder="Name" readOnly disabled/>
                 </div>
                 <div className="mb-3">
                     <input type="email" name="email" defaultValue={user?.email} className="form-control" id="emailField"  placeholder="Email" readOnly disabled/>

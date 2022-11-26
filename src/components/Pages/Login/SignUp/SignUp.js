@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import useToken from '../../../../hooks/useToken';
@@ -18,19 +19,21 @@ const SignUp = () => {
     }
     
     const handleSignUp = (data) => {
-        console.log(data);
         setSignUpError('');
-        createUser(data.email, data.password, data.role)
+        createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                console.log('User Created Successfully.')
+                toast.success('User Created Successfully.')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { 
-                        saveUser(data.name, data.email, data.role)
+                    .then(() => {
+                        saveUser(data.name, data.email,data.role)
+                    .then(result=>{
+                        console.log(result)
+                    })    
                     })
                     .catch(err => console.log(err));
             })
@@ -38,21 +41,21 @@ const SignUp = () => {
                 console.log(error)
                 setSignUpError(error.message)
             });
+    }
 
-            const saveUser = (name, email, role) =>{
-                const user ={name, email, role};
-                fetch('http://localhost:5000/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                .then(res => res.json())
-                .then(data =>{
-                    setCreatedUserEmail(email);
-                })
-            }
+    const saveUser = (name, email) =>{
+        const user ={name, email};
+        fetch('http://localhost:5000/users/', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            setCreatedUserEmail(email);
+        })
     }
     return (
         <form onSubmit={handleSubmit(handleSignUp)} style={{maxWidth:"25rem"}} className='mt-2 mx-auto'>
@@ -87,7 +90,7 @@ const SignUp = () => {
                 <select {...register("role")}
                     className="form-select my-4" aria-label="Default select example">
                     <option selected>seller</option>
-                    <option value="1">buyer</option>
+                    <option selected>buyer</option>
                 </select> 
                 {errors.password && <p className='text-danger' role="alert">{errors.password?.message}</p>}
             </div>
