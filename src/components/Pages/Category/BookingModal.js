@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import toast, { Toaster } from 'react-hot-toast';
 
 function BookingModal( {book, user} ) {
     
@@ -42,9 +43,16 @@ function BookingModal( {book, user} ) {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+          console.log(data);
+          if (data.acknowledged) {
+              toast.success('Booking confirmed');
+              form.reset();
+              handleClose();
+          }
+          else{
+              toast.error(data.message);
+          } 
         })
-
   }
 
   return (
@@ -85,6 +93,7 @@ function BookingModal( {book, user} ) {
                 </div>
                 <button className='btn btn-primary w-100' type='submit'>Submit</button>              
             </form>
+            <Toaster/>
         </Modal.Body>
       </Modal>
     </>

@@ -7,7 +7,7 @@ import useToken from '../../../../hooks/useToken';
 const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const { createUser,updateUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail);
@@ -86,8 +86,8 @@ const SignUp = () => {
                 <label htmlFor="role">Sign up as:</label>
                 <select {...register("role")}
                     className="form-select my-4" aria-label="Default select example">
-                    <option selected>Seller</option>
-                    <option value="1">Buyer</option>
+                    <option selected>seller</option>
+                    <option value="1">buyer</option>
                 </select> 
                 {errors.password && <p className='text-danger' role="alert">{errors.password?.message}</p>}
             </div>
