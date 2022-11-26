@@ -3,10 +3,10 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-const Admin = () => {
+const AllSeller = () => {
     const { data: users = [],refetch} = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/users`)
+        queryFn: () => fetch(`http://localhost:5000/allusers/seller`)
         .then(res=> res.json())      
     });
 
@@ -74,4 +74,4 @@ const Admin = () => {
     );
 };
 
-export default Admin;
+export default AllSeller;

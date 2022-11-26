@@ -2,12 +2,16 @@ import React from 'react';
 import Main from '../../../Layout/Main/Main';
 import Blog from '../../../Pages/Blog/Blog';
 import Category from '../../../Pages/Category/Category';
+import Admin from '../../../Pages/Dashboard/Admin';
 import Dashboard from '../../../Pages/Dashboard/Dashboard';
 import MyProduct from '../../../Pages/Dashboard/MyProduct';
+import AllBuyer from '../../../Pages/Dashboard/Admin/Users/AllBuyer';
+import AllSeller from '../../../Pages/Dashboard/Admin/Users/AllSeller';
 import Home from '../../../Pages/Home/Home/Home';
 import Login from '../../../Pages/Login/Login/Login';
 import SignUp from '../../../Pages/Login/SignUp/SignUp';
 import NotFound from '../../../Pages/NotFound/NotFound';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 const {createBrowserRouter} = require('react-router-dom');
 
 export const router = createBrowserRouter([
@@ -21,7 +25,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element:<Category></Category>,
+                element:<PrivateRoute><Category></Category></PrivateRoute>,
                 loader: ({params})=>fetch(`http://localhost:5000/books/${params.id}`)
             },
             {
@@ -38,15 +42,27 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element:<Dashboard></Dashboard>
+                element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             },
             {
                 path: '/myproducts',
-                element: <MyProduct></MyProduct>
+                element: <PrivateRoute><MyProduct></MyProduct></PrivateRoute>
             },
             {
                 path: '*',
                 element: <NotFound></NotFound>
+            },
+            {
+                path: '/admin',
+                element:<PrivateRoute><Admin></Admin></PrivateRoute>
+            },
+            {
+                path: '/allsellers',
+                element: <PrivateRoute><AllSeller></AllSeller></PrivateRoute>
+            },
+            {
+                path: 'allbuyers',
+                element:<PrivateRoute> <AllBuyer></AllBuyer></PrivateRoute>
             }
         ]
     }

@@ -45,7 +45,10 @@ const Seller = ( ) => {
                     location: data.location,	
                     resale_price: data.resale_price,	
                     original_price: data.original_price ,	
-                    years_of_use: data.years_of_use,	
+                    years_of_use: data.years_of_use,
+                    years_of_purchase: data.years_of_purchase,
+                    condition: data.condition,
+                    description: data.description,	
                     time_of_posting: date,	
                     seller_name: userInfo.name,	
                     seller_email: user?.email
@@ -97,6 +100,18 @@ const Seller = ( ) => {
             <div className="form-group my-3">
                 <input type="text" {...register("years_of_use")} 
                 className="form-control mt-2" id="years_of_use" placeholder="years_of_use"/>
+            </div>
+            <div className="form-group my-3">
+                <input type="text" {...register("years_of_purchase")} 
+                className="form-control mt-2" id="years_of_use" placeholder="years_of_purchase"/>
+            </div>
+            <div className="form-group my-3">
+                <input type="text" {...register("condition")} 
+                className="form-control mt-2" id="condition" placeholder="condition"/>
+            </div>
+            <div className="form-group my-3">
+                <input type="text" {...register("description")} 
+                className="form-control mt-2" id="description" placeholder="description"/>
             </div>
             <div className="form-group my-3">
                 <input type="file" {...register("image")} 
