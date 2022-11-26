@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { FaCheckCircle } from 'react-icons/fa';
 import BookingModal from './BookingModal';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-
+import { useFetch } from '../../../hooks/useFetch';
+import { Button } from 'react-bootstrap';
 
 const Category = () => {
 
-    const { user } = useContext(AuthContext);
-    const books = useLoaderData();
-   
+    const { user } = useContext(AuthContext); 
+    const [ userInfo ] = useFetch(user?.email)
  
-    
-    
+    const books = useLoaderData();
+ 
     return (
         <div className="row row-cols-1 g-0">
             {   
@@ -41,10 +41,19 @@ const Category = () => {
                                 { book.seller_status && <span className='ms-2 text-primary'><FaCheckCircle/></span>}</span>                    
                             </div>
                             <div className='mt-4'>
-                                <BookingModal 
-                                    book={book}
-                                    user={user}
-                                ></BookingModal>                             
+                                { userInfo.role === "buyer" &&
+                                    <BookingModal 
+                                        book={book}
+                                        user={user}
+                                        userInfo= {userInfo}
+                                    ></BookingModal>
+                                }
+                                {
+                                    userInfo.role === "seller" &&
+                                        <Button variant="primary" size="md" disabled>
+                                            Book Now
+                                        </Button>
+                                }                             
                             </div>
                         </div>
                        </div>

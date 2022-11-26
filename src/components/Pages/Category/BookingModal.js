@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import toast, { Toaster } from 'react-hot-toast';
+import { useFetch } from '../../../hooks/useFetch';
 
-function BookingModal( {book, user} ) {
+function BookingModal( {book, user, userInfo} ) {
   console.log(book);  
   const [show, setShow] = useState(false);
+
+  // const [userInfo] = useFetch(user?.email)
+  // console.log(userInfo)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -76,7 +80,7 @@ function BookingModal( {book, user} ) {
             {/* contains the booking form in modal body */}
             <form onSubmit={handleBooking}>
                 <div className="mb-3">
-                    <input type="name"  name="name" defaultValue={user?.displayName} className="form-control" id="nameField" placeholder="Name"/>
+                    <input type="name"  name="name" defaultValue={userInfo?.name} className="form-control" id="nameField" placeholder="Name" readOnly disabled/>
                 </div>
                 <div className="mb-3 visually-hidden">
                     <input type="img"  name="img" defaultValue={book.img} className="form-control" id="nameField" placeholder="Name" readOnly disabled/>

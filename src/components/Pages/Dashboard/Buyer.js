@@ -1,13 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+
 
 const Buyer = () => {
+    const { user } = useContext(AuthContext);
+    
     const { data: bookings = [],refetch} = useQuery({
         queryKey: ['bookings'],
-        queryFn: () => fetch('http://localhost:5000/orders')
-        .then(res=> res.json())
-        
+        queryFn: () => fetch(`http://localhost:5000/orders/${user?.email}`)
+        .then(res=> res.json())      
     });
 
     const handleDelete = (id) => {

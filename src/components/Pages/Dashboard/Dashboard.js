@@ -8,12 +8,13 @@ import Seller from './Seller';
 const Dashboard = () => {
     const { user } = useContext(AuthContext);   
     const [ userInfo] = useFetch(user?.email)
+    console.log(userInfo);
 
     return (
         <div>
-            { userInfo.role === "seller" && <Seller></Seller>} 
-            { userInfo.role === "buyer" && <Buyer></Buyer>} 
-            { userInfo.role === "admin" && <Admin></Admin>} 
+            { userInfo.role === "seller" && <Seller userInfo={userInfo}></Seller>} 
+            { userInfo.role === "buyer" && <Buyer userInfo={userInfo}></Buyer>} 
+            { userInfo.role === "admin" && <Admin userInfo={userInfo}></Admin>} 
         </div>
     );
 };
