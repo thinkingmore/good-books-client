@@ -48,7 +48,7 @@ const Seller = ( ) => {
                     years_of_use: data.years_of_use,	
                     time_of_posting: date,	
                     seller_name: userInfo.name,	
-                    seller_status: user?.email
+                    seller_email: user?.email
                 }
                 // save products information to the database
                 fetch(`http://localhost:5000/books`,{
