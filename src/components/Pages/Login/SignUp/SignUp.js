@@ -19,6 +19,7 @@ const SignUp = () => {
     }
     
     const handleSignUp = (data) => {
+        console.log(data);
         setSignUpError('');
         createUser(data.email, data.password)
             .then(result => {
@@ -30,7 +31,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email,data.role)
+                        saveUser(data.name, data.email, data.role)
                     .then(result=>{
                         console.log(result)
                     })    
@@ -43,8 +44,8 @@ const SignUp = () => {
             });
     }
 
-    const saveUser = (name, email) =>{
-        const user ={name, email};
+    const saveUser = (name, email, role) =>{
+        const user ={name, email, role};
         fetch('http://localhost:5000/users/', {
             method: 'POST',
             headers: {
@@ -87,12 +88,12 @@ const SignUp = () => {
             </div>
             <div className="form-group my-3">
                 <label htmlFor="role">Sign up as:</label>
-                <select {...register("role")}
+                <select {...register("role",{required: "Please choose a role"})}
                     className="form-select my-4" aria-label="Default select example">
-                    <option selected>seller</option>
-                    <option selected>buyer</option>
+                     <option selected value="buyer">buyer</option>
+                    <option value="seller">seller</option>  
                 </select> 
-                {errors.password && <p className='text-danger' role="alert">{errors.password?.message}</p>}
+                {errors.role && <p className='text-danger' role="alert">{errors.role?.message}</p>}
             </div>
             <button type="submit" className="btn btn-primary w-100 mt-2">Submit</button>
             <p>Already have an account? Click here to <Link to="/login">Login</Link></p>

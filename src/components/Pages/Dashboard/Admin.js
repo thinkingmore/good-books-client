@@ -62,7 +62,11 @@ const Admin = () => {
                                 <td>{user.name}</td>                 
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td><button onClick={()=> handleDelete(user._id)} type="button" className="btn btn-primary my-2">Delete</button></td>
+                                <td>{
+                                    user.role !== "admin" &&
+                                    <button onClick={()=> handleDelete(user._id)} type="button" className="btn btn-danger btn-sm">Delete</button>
+                                    }
+                                </td>
                             </tr>   
                         )                
                     }       
