@@ -10,6 +10,26 @@ const AllSeller = () => {
         .then(res=> res.json())      
     });
 
+
+    const handleAddStatus = (id) => {
+        fetch(`http://localhost:5000/allsellers/${id}`, {
+            method: 'PUT', 
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
+                toast.success(`This user has become successfully verified`)       
+            }
+            refetch();
+        })
+        .catch(error=> console.error(error))
+    }
+
+
+
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/users/${id}`, {
             method: 'DELETE', 
@@ -33,10 +53,10 @@ const AllSeller = () => {
                 <div className='col-3 bg-light'>
                 <ul class="nav flex-column text-center p-4">
                     <li class="nav-item">
-                        <Link class="nav-link active" to="/">All Buyers</Link>
+                        <Link class="nav-link active" to="/allbuyers">All Buyers</Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/">All Sellers</Link>
+                        <Link class="nav-link" to="/allsellers">All Sellers</Link>
                     </li>
                     </ul>
                 </div>
@@ -49,6 +69,7 @@ const AllSeller = () => {
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
+                        <th scope="col">Verification</th>
                         <th scope="col">Delete</th>
                     </tr>
                 </thead>
@@ -62,7 +83,16 @@ const AllSeller = () => {
                                 <td>{user.name}</td>                 
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td><button onClick={()=> handleDelete(user._id)} type="button" className="btn btn-primary my-2">Delete</button></td>
+                                <td>
+                                    {    
+                                        user.seller_status === "verified"?
+                                        <span class="badge text-bg-light">Verfied</span>
+                                        :
+                                        <button onClick={()=> handleAddStatus(user._id)} type="button" 
+                                        className="btn btn-primary btn-sm">Make verified</button>
+                                    }
+                                </td>
+                                <td><button onClick={()=> handleDelete(user._id)} type="button" className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>   
                         )                
                     }       

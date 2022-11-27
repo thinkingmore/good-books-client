@@ -35,12 +35,12 @@ const AllBuyer = () => {
             <div className='col-3 bg-light'>
             <ul class="nav flex-column text-center p-4">
                 <li class="nav-item">
-                    <Link class="nav-link active" to="/">All Buyers</Link>
+                    <Link class="nav-link active" to="/allbuyers">All Buyers</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link" to="/">All Sellers</Link>
+                    <Link class="nav-link" to="/allsellers">All Sellers</Link>
                 </li>
-                </ul>
+            </ul>
             </div>
             <div className='col-9'>
             <h3 className='text-center mt-2'>All Users</h3>
@@ -64,7 +64,7 @@ const AllBuyer = () => {
                             <td>{user.name}</td>                 
                             <td>{user.email}</td>
                             <td>{user.role}</td>
-                            <td><button onClick={()=> handleDelete(user._id)} type="button" className="btn btn-primary my-2">Delete</button></td>
+                            <td><button onClick={()=> handleDelete(user._id)} type="button" className="btn btn-danger btn-sm">Delete</button></td>
                         </tr>   
                     )                
                 }       
