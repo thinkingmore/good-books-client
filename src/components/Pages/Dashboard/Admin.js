@@ -31,12 +31,15 @@ const Admin = () => {
         <div>
             <div className="row row-cols-2">
                 <div className='col-3 bg-light'>
-                    <ul class="nav flex-column text-center p-4">
-                        <li class="nav-item">
-                            <Link class="nav-link active" to="/allsellers">All Buyers</Link>
+                    <ul className="nav flex-column text-center p-4">
+                        <li className="nav-item">
+                            <Link className="nav-link active" to="/allsellers">All Buyers</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/allbuyers">All Sellers</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/allbuyers">All Sellers</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/report">Reported Items</Link>
                         </li>
                     </ul>
                 </div>

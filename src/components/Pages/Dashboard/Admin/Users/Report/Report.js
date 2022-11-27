@@ -3,15 +3,15 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-const AllBuyer = () => {
-    const { data: users = [],refetch} = useQuery({
-        queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/allusers/buyer`)
+const Report = () => {
+    const { data: report = [],refetch} = useQuery({
+        queryKey: ['report'],
+        queryFn: () => fetch(`http://localhost:5000/report`)
         .then(res=> res.json())      
     });
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`http://localhost:5000/report/${id}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -20,7 +20,7 @@ const AllBuyer = () => {
         .then(res => res.json())
         .then(data => {
             if(data.deletedCount > 0){
-                toast.success(`User deleted successfully`)
+                toast.success(`Item deleted successfully`)
                
             }
             refetch();
@@ -46,28 +46,26 @@ const AllBuyer = () => {
             </ul>
             </div>
             <div className='col-9'>
-            <h3 className='text-center mt-2'>All Buyers</h3>
+            <h3 className='text-center mt-2'>Reported Items</h3>
         <table className="table">
             <thead>
                 <tr>
                     <th scope="col">Serial</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
+                    <th scope="col">Seller Email</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    users.map((user,i) => 
+                    report.map((rt,i) => 
                         <tr
                             key={i}
                             >
                             <td>{i +1 }</td>
-                            <td>{user.name}</td>                 
-                            <td>{user.email}</td>
-                            <td>{user.role}</td>
-                            <td><button onClick={()=> handleDelete(user._id)} type="button" className="btn btn-danger btn-sm">Delete</button></td>
+                            <td>{rt.name}</td>                 
+                            <td>{rt.email}</td>
+                            <td><button onClick={()=> handleDelete(rt._id)} type="button" className="btn btn-danger btn-sm">Delete</button></td>
                         </tr>   
                     )                
                 }       
@@ -79,4 +77,4 @@ const AllBuyer = () => {
     );
 };
 
-export default AllBuyer;
+export default Report;

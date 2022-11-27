@@ -51,17 +51,20 @@ const AllSeller = () => {
         <div>
             <div className="row row-cols-2">
                 <div className='col-3 bg-light'>
-                <ul class="nav flex-column text-center p-4">
-                    <li class="nav-item">
-                        <Link class="nav-link active" to="/allbuyers">All Buyers</Link>
+                <ul className="nav flex-column text-center p-4">
+                    <li className="nav-item">
+                        <Link className="nav-link active" to="/allbuyers">All Buyers</Link>
                     </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" to="/allsellers">All Sellers</Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/allsellers">All Sellers</Link>
                     </li>
-                    </ul>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/report">Reported Items</Link>
+                    </li>
+                </ul>
                 </div>
                 <div className='col-9'>
-                <h3 className='text-center mt-2'>All Users</h3>
+                <h3 className='text-center mt-2'>All Sellers</h3>
             <table className="table">
                 <thead>
                     <tr>
@@ -86,7 +89,7 @@ const AllSeller = () => {
                                 <td>
                                     {    
                                         user.seller_status === "verified"?
-                                        <span class="badge text-bg-light">Verfied</span>
+                                        <span className="badge text-bg-light">Verfied</span>
                                         :
                                         <button onClick={()=> handleAddStatus(user._id)} type="button" 
                                         className="btn btn-primary btn-sm">Make verified</button>

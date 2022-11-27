@@ -12,6 +12,10 @@ import Login from '../../../Pages/Login/Login/Login';
 import SignUp from '../../../Pages/Login/SignUp/SignUp';
 import NotFound from '../../../Pages/NotFound/NotFound';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import Report from '../../../Pages/Dashboard/Admin/Users/Report/Report';
+import AdminRoute from '../AdminRoute/AdminRoute';
+
+
 const {createBrowserRouter} = require('react-router-dom');
 
 export const router = createBrowserRouter([
@@ -54,15 +58,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/admin',
-                element:<PrivateRoute><Admin></Admin></PrivateRoute>
+                element:<PrivateRoute><AdminRoute><Admin></Admin></AdminRoute></PrivateRoute>
             },
             {
                 path: '/allsellers',
-                element: <PrivateRoute><AllSeller></AllSeller></PrivateRoute>
+                element: <PrivateRoute><AdminRoute><AllSeller></AllSeller></AdminRoute></PrivateRoute>
             },
             {
                 path: 'allbuyers',
-                element:<PrivateRoute> <AllBuyer></AllBuyer></PrivateRoute>
+                element:<PrivateRoute><AdminRoute><AllBuyer></AllBuyer></AdminRoute></PrivateRoute>
+            },
+            {
+                path: 'Report',
+                element: <PrivateRoute><AdminRoute><Report></Report></AdminRoute></PrivateRoute>
             }
         ]
     }

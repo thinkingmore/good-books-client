@@ -20,14 +20,15 @@ const Advertised = () => {
                 <div className="row row-cols-lg-3 mx-0 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
                     {               
                         advertise.map(adv=>
+                            <div>
                             <div className="card mb-3" style={{maxWidth:"20rem"}}
                                 key={adv._id}
                             >
                                 <div>
-                                <div className="col-md-4">
-                                    <img src={adv.img} className="img-fluid rounded-start" alt="..."/>
+                                <div>
+                                    <img src={adv.img} style={{maxHeight:"200px"}} className="img-thumbnail rounded-start" alt="..."/>
                                 </div>
-                                <div className="col-md-8">
+                                <div>
                                     <div className="card-body">
                                     <h5 className="card-title">{adv.name}</h5>
                                     <p><span className='fw-bold'>Category:</span> {adv.category_name}</p>
@@ -38,6 +39,7 @@ const Advertised = () => {
                                     </div>
                                 </div>
                                 </div>
+                            </div>
                             </div> 
                             
                         )          

@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const MyProduct = () => {
     const { user } = useContext(AuthContext);
+    
     
     const { data:books = [],refetch} = useQuery({
         queryKey: ['products'],
@@ -16,7 +18,7 @@ const MyProduct = () => {
     // advertise product
 
     const handleAdvertise = id => {
-        fetch(`http://localhost:5000/myproducts/${id}`, {
+        fetch(`http://localhost:5000/myproducts/advertise/${id}`, {
             method: 'PUT', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +34,24 @@ const MyProduct = () => {
         .catch(error=>console.log(error))
     }
     
+    // update sales status
     
+    const handleStatusUpdate = id => {
+        fetch(`http://localhost:5000/myproducts/status/${id}`, {
+            method: 'PUT', 
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
+                toast.success(`Successfully updated the status`)
+                refetch();
+            }
+        })
+        .catch(error=>console.log(error))
+    }
     
     
     // delete product
@@ -78,8 +97,20 @@ const MyProduct = () => {
                                 <td><img src= {book?.img} style={{height: "150px", width: "120px"}}  alt="book-cover"/></td>
                                 <td>{book.name}</td>                 
                                 <td>{book.resale_price}</td>
-                                <td><button onClick={()=> handleDelete(book._id)} type="button" className="btn btn-success btn-sm">Mark as sold</button></td>
-                                <td><button onClick={()=> handleAdvertise(book._id)} type="button" className="btn btn-primary btn-sm">Advertise</button></td>
+                                <td>{   
+                                        book.available === "no"? 
+                                        <span className="badge bg-light text-dark">Sold</span> 
+                                        :
+                                        <button onClick={()=> handleStatusUpdate(book._id)} type="button" 
+                                        className="btn btn-success btn-sm">Mark as sold</button>
+                                    }
+                                </td>
+                                <td>{
+                                        book.available !== "no" &&
+                                        <button onClick={()=> handleAdvertise(book._id)} type="button" 
+                                        className="btn btn-primary btn-sm">Advertise</button>
+                                    }
+                                </td>
                                 <td><button onClick={()=> handleDelete(book._id)} type="button" className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>   
                         )                
