@@ -6,7 +6,7 @@ const Advertised = () => {
 
     const { data: advertise = [] } = useQuery({
         queryKey: ['advertise'],
-        queryFn: () => fetch('http://localhost:5000/avertised/')
+        queryFn: () => fetch('http://localhost:5000/advertised/')
         .then(res=> res.json())
     });
 
@@ -20,10 +20,8 @@ const Advertised = () => {
                 <div className="row row-cols-lg-3 mx-0 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
                     {               
                         advertise.map(adv=>
-                            <div>
-                            <div className="card mb-3" style={{maxWidth:"20rem"}}
-                                key={adv._id}
-                            >
+                            <div key={adv._id}>
+                            <div className="card mb-3" style={{maxWidth:"20rem"}}>
                                 <div>
                                 <div>
                                     <img src={adv.img} style={{maxHeight:"200px"}} className="img-thumbnail rounded-start" alt="..."/>

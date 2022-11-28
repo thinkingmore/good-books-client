@@ -10,8 +10,11 @@ import toast from 'react-hot-toast';
 const Category = () => {
 
     const { user } = useContext(AuthContext); 
-    const [ userInfo ] = useFetch(user?.email)
- 
+    const [ userInfo ] = useFetch(user?.email);
+
+    // constructing the role of buyer by conditional rendering
+    const isBuyer = (user.uid !== null && userInfo.role !== "seller" && userInfo.role !== "admin");
+    
     const books = useLoaderData();
 
     const handleReportToAdmin = (id) => {
@@ -60,16 +63,24 @@ const Category = () => {
                             </div>
                             <div className='mt-4 d-flex justify-content-between'>
                                 {
-                                    userInfo.role ==="buyer" && 
+                                    isBuyer && 
                                     <Button onClick={()=>handleReportToAdmin(book._id)} variant="dark text-white">Report to Admin</Button>
                                 }
-                                { userInfo.role === "buyer" &&  book?.available !== "no" &&
+                                
+                                { 
+                                    // (user?.uid !== null &&
+                                    // userInfo.role !== "seller" && 
+                                    // userInfo.role !== "admin" &&
+                                    // book?.available !== "no")  &&
+
+                                    (isBuyer && book?.available !== "no") &&
                                     <BookingModal 
                                         book={book}
                                         user={user}
                                         userInfo= {userInfo}
                                     ></BookingModal>
                                 }
+                                
                                 {
                                     userInfo.role === "seller"  &&
                                         <Button variant="primary" size="md" disabled>

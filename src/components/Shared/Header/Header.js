@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { useFetch } from '../../../hooks/useFetch';
 
 
 const Header = () => {
 
     const { user, logOut } =  useContext( AuthContext)
+    const [userInfo] = useFetch(user?.email);
     const handleLogOut = () => {
         logOut()
         .then( () => {})
@@ -35,7 +37,9 @@ const Header = () => {
                                     <Link className="nav-link" to="/dashboard">Dashboard</Link>
                                 </li>                      
                                 <li className="nav-item">
-                                    <Link className="nav-link disabled"><small>{ user?.email}</small></Link>
+                                    <Link className="nav-link disabled">             
+                                        <small>{user?.email}</small>
+                                    </Link>               
                                 </li>
                                 <li className="nav-item">
                                     <Link onClick={ handleLogOut } className="nav-link">Logout</Link>

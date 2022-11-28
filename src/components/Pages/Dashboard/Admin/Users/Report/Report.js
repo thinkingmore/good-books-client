@@ -52,7 +52,7 @@ const Report = () => {
                 <tr>
                     <th scope="col">Serial</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Seller Email</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>

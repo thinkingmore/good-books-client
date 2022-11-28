@@ -1,19 +1,21 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext,useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import useToken from '../../../../hooks/useToken';
 
+
 const Login = () => {
     
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [loginError, setLoginError] = useState('');
 
-    const [loginUserEmail, setLoginUserEmail] = useState('');
 
+    const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
+
 
     const { login,providerLogin } = useContext(AuthContext);
     
@@ -35,11 +37,12 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user.email);
-            saveUser(user.uid,user.email,role);
+                setLoginUserEmail(user.email);
+                navigate(form, {replace: true})
+                // saveUser(user.uid,user.email,role);
         })
         .catch(error => console.error(error))
     }
-    
     
     
     
@@ -58,35 +61,22 @@ const Login = () => {
         });
     }
 
-    const saveUser = (name, email, role) =>{
-        const user ={name, email, role};
-        fetch('http://localhost:5000/users/', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-        .then(res => res.json())
-        .then(data =>{
-            setLoginUserEmail(email);
-        })
-    }
-    
-    // const handleLogin = (data) =>{
-
-    //     login( data.email, data.password)
-    //     .then(res=> {
-    //       const user = res.user;
-    //       console.log(user);
-
-    //       const currentUser =  {
-    //         email: user?.email
-    //       }
-
-    //       console.log(currentUser);
-    //     })  
+    // const saveUser = (name, email, role) =>{
+    //     const user ={name, email, role};
+    //     fetch('http://localhost:5000/users/', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(user)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data =>{
+    //         setLoginUserEmail(email);
+    //     })
     // }
+    
+   
 
     return (
         <div className='mx-auto' style={{maxWidth:"25rem"}}>
