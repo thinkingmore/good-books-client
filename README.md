@@ -21,7 +21,7 @@ Good Books is a website built React,React Bootstrap, Bootstrap and Express JS se
 * The buyer can book a product and remove the products from their order list.
 
 adminEmail: nayadoc@gmail.com
-adminPassword:L*2456gh
+<br> adminPassword:L*2456gh
 
 This is a single page application.It uses react-router-dom for navigation so it makes it very fast.The authentication system of this site is powered by firebase.It looks nice and attractive.The UI interface of this web application is made simple so the users can quickly navigate through out the different pages of website. 
 ### `npm start`
