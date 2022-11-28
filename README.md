@@ -10,6 +10,8 @@ In the project directory, you can run:
 
 Good Books is a website built React,React Bootstrap, Bootstrap and Express JS server.It is a second hand book selling website on which people can buy and sell second hand books.The core functionalities and features of this website are the following:
 
+# Live link: https://good-books-app.web.app/
+
 * It has two login option and three different dashboard for users.
 * It uses react hot toast and tanstack query as external package.
 * It has private route and admin protected route for making it more secure.
@@ -17,6 +19,9 @@ Good Books is a website built React,React Bootstrap, Bootstrap and Express JS se
 * The admin can delete and update the users from backend and remove products which are reported.
 * The users can add products and advertise their products on the homepage.
 * The buyer can book a product and remove the products from their order list.
+
+adminEmail: nayadoc@gmail.com
+adminPassword:L*2456gh
 
 This is a single page application.It uses react-router-dom for navigation so it makes it very fast.The authentication system of this site is powered by firebase.It looks nice and attractive.The UI interface of this web application is made simple so the users can quickly navigate through out the different pages of website. 
 ### `npm start`
