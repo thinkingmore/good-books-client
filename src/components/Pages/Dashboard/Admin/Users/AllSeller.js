@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 const AllSeller = () => {
     const { data: users = [],refetch} = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/allusers/seller`)
+        queryFn: () => fetch(`https://good-books-server.vercel.app/allusers/seller`)
         .then(res=> res.json())      
     });
 
 
     const handleAddStatus = (id) => {
-        fetch(`http://localhost:5000/allsellers/${id}`, {
+        fetch(`https://good-books-server.vercel.app/allsellers/${id}`, {
             method: 'PUT', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const AllSeller = () => {
 
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://good-books-server.vercel.app/users/${id}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

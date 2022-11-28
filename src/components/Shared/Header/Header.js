@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
@@ -8,7 +9,7 @@ import { useFetch } from '../../../hooks/useFetch';
 const Header = () => {
 
     const { user, logOut } =  useContext( AuthContext)
-    const [userInfo] = useFetch(user?.email);
+
     const handleLogOut = () => {
         logOut()
         .then( () => {})
@@ -16,52 +17,38 @@ const Header = () => {
         toast.success("Log out successfull")
     }
     return (
-        <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div className="container-fluid">
-                <Link className="navbar-brand"to="/">Good Books</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page"to="/">Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/blog">Blog</Link>
-                        </li>
-                        {
-                            user?
-                            <>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                                </li>                      
-                                <li className="nav-item">
-                                    <Link className="nav-link disabled">             
-                                        <small>{user?.email}</small>
-                                    </Link>               
-                                </li>
-                                <li className="nav-item">
-                                    <Link onClick={ handleLogOut } className="nav-link">Logout</Link>
-                                </li>
-                                
-                            </>
-                                :  
-                            <>
-                                <li className="nav-item">
-                                    <Link className="nav-link"to="/login">Login</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link"to="/signup">Sign up</Link>
-                                </li>
-                            
-                            </>                       
-                        }
-                    </ul>
-                </div>
-                <Toaster/>
-            </div>
-        </nav>
+        <Navbar collapseOnSelect className="mb-4" expand="lg" bg="dark" variant="dark">
+        <Container>
+            <Navbar.Brand><Link to='/' className='text-decoration-none text-white'>Good Books</Link></Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ms-auto">
+                <Nav.Link><Link to='/' className='text-decoration-none text-white'>Home</Link></Nav.Link>
+                <Nav.Link><Link to='/blog' className='text-decoration-none text-white'>Blog</Link></Nav.Link>
+                <Nav.Link><Link to='/dashboard' className='text-decoration-none text-white'>Dashboard</Link></Nav.Link>
+                
+            </Nav>
+            <Nav>
+                <Nav.Link href="#deets">
+                    {
+                        user?.uid ?
+                        <>
+                            <span className='me-2'>{user?.email}</span>
+                            <Button variant="light" onClick={handleLogOut}>Log out</Button>
+                        </>
+                        :
+                        <>
+                            <Link to="/login" className='text-decoration-none text-white'>Login</Link>
+                            <Link to="/signup" className='ms-2 text-decoration-none text-white'>Signup</Link>
+                        </>
+                    }
+                </Nav.Link>
+            </Nav>
+            </Navbar.Collapse>
+            <Toaster/>
+        </Container>
+    </Navbar>             
+        
     );
 };
 

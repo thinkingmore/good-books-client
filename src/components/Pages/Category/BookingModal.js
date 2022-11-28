@@ -5,7 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useFetch } from '../../../hooks/useFetch';
 
 function BookingModal( {book, user, userInfo} ) {
-  console.log(book);  
+  
   const [show, setShow] = useState(false);
 
   // const [userInfo] = useFetch(user?.email)
@@ -40,7 +40,7 @@ function BookingModal( {book, user, userInfo} ) {
 
     console.log(booking);
 
-    fetch('http://localhost:5000/orders', {
+    fetch('https://good-books-server.vercel.app/orders', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

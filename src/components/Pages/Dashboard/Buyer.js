@@ -9,12 +9,12 @@ const Buyer = () => {
     
     const { data: bookings = [],refetch} = useQuery({
         queryKey: ['bookings'],
-        queryFn: () => fetch(`http://localhost:5000/orders/${user?.email}`)
+        queryFn: () => fetch(`https://good-books-server.vercel.app/orders/${user?.email}`)
         .then(res=> res.json())      
     });
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://good-books-server.vercel.app/orders/${id}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

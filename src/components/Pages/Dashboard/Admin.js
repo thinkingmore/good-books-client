@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 const Admin = () => {
     const { data: users = [],refetch} = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/users`)
+        queryFn: () => fetch(`https://good-books-server.vercel.app/users`)
         .then(res=> res.json())      
     });
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://good-books-server.vercel.app/users/${id}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

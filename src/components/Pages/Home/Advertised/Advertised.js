@@ -6,7 +6,7 @@ const Advertised = () => {
 
     const { data: advertise = [] } = useQuery({
         queryKey: ['advertise'],
-        queryFn: () => fetch('http://localhost:5000/advertised/')
+        queryFn: () => fetch('https://good-books-server.vercel.app/advertised/')
         .then(res=> res.json())
     });
 

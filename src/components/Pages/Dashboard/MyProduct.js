@@ -10,7 +10,7 @@ const MyProduct = () => {
     
     const { data:books = [],refetch} = useQuery({
         queryKey: ['products'],
-        queryFn: () => fetch(`http://localhost:5000/myproducts/${user?.email}`)
+        queryFn: () => fetch(`https://good-books-server.vercel.app/myproducts/${user?.email}`)
         .then(res=> res.json()) 
      
     });
@@ -18,7 +18,7 @@ const MyProduct = () => {
     // advertise product
 
     const handleAdvertise = id => {
-        fetch(`http://localhost:5000/myproducts/advertise/${id}`, {
+        fetch(`https://good-books-server.vercel.app/myproducts/advertise/${id}`, {
             method: 'PUT', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -37,7 +37,7 @@ const MyProduct = () => {
     // update sales status
     
     const handleStatusUpdate = id => {
-        fetch(`http://localhost:5000/myproducts/status/${id}`, {
+        fetch(`https://good-books-server.vercel.app/myproducts/status/${id}`, {
             method: 'PUT', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -56,7 +56,7 @@ const MyProduct = () => {
     
     // delete product
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`https://good-books-server.vercel.app/books/${id}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element:<PrivateRoute><Category></Category></PrivateRoute>,
-                loader: ({params})=>fetch(`http://localhost:5000/books/${params.id}`)
+                loader: ({params})=>fetch(`https://good-books-server.vercel.app/books/${params.id}`)
             },
             {
                 path: '/login',

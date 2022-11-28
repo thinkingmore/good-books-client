@@ -18,7 +18,7 @@ const Category = () => {
     const books = useLoaderData();
 
     const handleReportToAdmin = (id) => {
-        fetch(`http://localhost:5000/report/${id}`, {
+        fetch(`https://good-books-server.vercel.app/report/${id}`, {
             method: 'PUT', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
