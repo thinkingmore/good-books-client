@@ -32,7 +32,6 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     
     const handleGoogleSignIn = () => {
-        const role ="buyer"
         providerLogin (googleProvider)
         .then(result => {
             const user = result.user;

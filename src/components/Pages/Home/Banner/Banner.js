@@ -21,7 +21,7 @@ const Banner = () => {
                 </div>
             </div>
             <div className="lc-block d-grid gap-2 d-md-flex justify-content-md-start">
-                <Link className="btn btn-dark px-4 me-md-2 keychainify-checked" href="#" role="button">Find Books</Link>               
+                <Link className="btn btn-dark px-4 me-md-2 keychainify-checked" to="/details" role="button">Read More</Link>               
             </div>
         </div>
         <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">

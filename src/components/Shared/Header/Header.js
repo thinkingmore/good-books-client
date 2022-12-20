@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { useFetch } from '../../../hooks/useFetch';
+
 
 
 const Header = () => {
@@ -24,6 +24,7 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
                 <Nav.Link><Link to='/' className='text-decoration-none text-white'>Home</Link></Nav.Link>
+                <Nav.Link><Link to='/details' className='text-decoration-none text-white'>About</Link></Nav.Link>
                 <Nav.Link><Link to='/blog' className='text-decoration-none text-white'>Blog</Link></Nav.Link>
                 <Nav.Link><Link to='/dashboard' className='text-decoration-none text-white'>Dashboard</Link></Nav.Link>
                 
