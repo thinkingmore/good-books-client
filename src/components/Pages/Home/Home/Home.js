@@ -5,6 +5,8 @@ import About from '../About/About';
 import Advertised from '../Advertised/Advertised';
 import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
+import Newsletter from '../Newsletter/Newsletter';
+import Testimonial from '../Testimonial/Testimonial';
 
 const Home = () => {
 
@@ -14,6 +16,8 @@ const Home = () => {
           <Advertised></Advertised>
           <About></About>
           <Categories></Categories>
+          <Testimonial></Testimonial>
+          <Newsletter></Newsletter>        
         </>
         
     );
