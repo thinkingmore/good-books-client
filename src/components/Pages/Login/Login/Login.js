@@ -79,6 +79,13 @@ const Login = () => {
 
     return (
         <div className='mx-auto' style={{maxWidth:"25rem"}}>
+            <div>
+                <h4>Test Login</h4>
+                <p><strong>User(Buyer): </strong>anto@gmail.com</p>
+                <p><strong>User(Seller): </strong>anisha@gmail.com</p>
+                <p><strong>Password:</strong>L*2456gh</p>
+
+            </div>
             <form onSubmit={handleSubmit(handleLogin)}  className='mt-2 mx-auto'>
                 <div className="form-group my-3">
                     <label htmlFor="email">Email</label>
