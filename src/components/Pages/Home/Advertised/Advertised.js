@@ -21,21 +21,21 @@ const Advertised = () => {
                     {               
                         advertise.map(adv=>
                             <div key={adv._id}>
-                            <div className="card mb-3" style={{maxWidth:"20rem"}}>
+                            <div className="card mb-3 border-success border-opacity-10" style={{maxWidth:"20rem"}}>
                                 <div>
-                                <div>
-                                    <img src={adv.img} style={{maxHeight:"200px"}} className="img-thumbnail rounded-start" alt="..."/>
-                                </div>
-                                <div>
-                                    <div className="card-body">
-                                    <h5 className="card-title">{adv.name}</h5>
-                                    <p><span className='fw-bold'>Category:</span> {adv.category_name}</p>
-                                    <p><span className='fw-bold'>Price:</span> {adv.resale_price}</p>
-                                    <p><span className='fw-bold'>Seller:</span> {adv.seller_name}</p>
-                                    <p><span className='fw-bold'>Used for:</span> {adv.years_of_use}</p>
-                                    <p><span className='fw-bold'>Posted on:</span> {adv.time_of_posting}</p>
+                                    <div>
+                                        <img src={adv.img} style={{maxHeight:"200px"}} className="img-thumbnail rounded-start" alt="..."/>
                                     </div>
-                                </div>
+                                    <div>
+                                        <div className="card-body">
+                                        <h5 className="card-title">{adv.name}</h5>
+                                        <p><span className='fw-bold'>Category:</span> {adv.category_name}</p>
+                                        <p><span className='fw-bold'>Price:</span> {adv.resale_price}</p>
+                                        <p><span className='fw-bold'>Seller:</span> {adv.seller_name}</p>
+                                        <p><span className='fw-bold'>Used for:</span> {adv.years_of_use}</p>
+                                        <p><span className='fw-bold'>Posted on:</span> {adv.time_of_posting}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             </div> 
